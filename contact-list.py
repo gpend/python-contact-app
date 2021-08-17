@@ -28,7 +28,7 @@ def addContact():
 
 
 def removeContact():
-    choice = input(("Search by? (F)irst name, (L)ast name or (P)hone number\n" +
+    choice = input(("Search by? (F)irst name, (L)ast name or (P)hone number\n"+
                    "Enter F, L, or P: ")).casefold
     if choice == 'f':
         f_name = input("enter first name to search: ")
@@ -49,6 +49,11 @@ def removeContact():
 
 user_choice = 0
 
+# # begin test contacts
+contact_list += contact(user1f,user1l,123456)
+contact_list += contact(user2f,user2l,234567)
+contact_list += contact(user3f,user3l,345678)
+# # end test contacts
 
 while user_choice != "4":
     clear()
