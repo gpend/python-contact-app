@@ -28,34 +28,48 @@ def addContact():
 
 
 def removeContact():
-    choice = input("Search by? (F)irst name, (L)ast name or (P)hone number\nEnter F, L, or P: ")
-    if choice == "F":
-        pass
-    elif choice == "L":
-        pass
-    elif choice == "P":
-        pass
+    choice = input(("Search by? (F)irst name, (L)ast name or (P)hone number\n" +
+                   "Enter F, L, or P: ")).casefold
+    if choice == 'f':
+        f_name = input("enter first name to search: ")
+        for index, item in enumerate(contact_list):
+            if item.first_name == f_name:
+                contact_list.pop(index)
+    elif choice == 'l':
+        l_name = input("enter first name to search: ")
+        for index, item in enumerate(contact_list):
+            if item.last_name == l_name:
+                contact_list.pop(index)
+    elif choice == 'p':
+        p_number = input("enter first name to search: ")
+        for index, item in enumerate(contact_list):
+            if item.phone_number == p_number:
+                contact_list.pop(index)
 
 
-add_another = 0
+user_choice = 0
 
 
-while add_another != "4":
-    add_another = input(
+while user_choice != "4":
+    clear()
+    user_choice = input(
 """enter your choice:
 1) add a contact
 2) remove a contact
 3) list contacts
 4) Exit
  """)
-    if add_another == "1":
+    
+    if user_choice == "1":
         contact_list += addContact()
-    elif add_another == "2":
-        print("sorry, not implemented yet")
-        removeContact()
-    elif add_another == "3":
-        print("sorry, not implemented yet")
 
+    elif user_choice == "2":
+        removeContact()
+
+    elif user_choice == "3":
+        for item in contact_list:
+            print(item.first_name)
+        input("press enter to continue")
 
 for i in contact_list:
     print("{0} {1}".format(i.first_name, i.last_name))
