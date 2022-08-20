@@ -5,7 +5,7 @@ def clear():
     lambda: os.system('clear')
 
 
-contact_list = []
+contactList = []
 
 
 class contact:
@@ -28,53 +28,54 @@ def addContact():
 
 
 def removeContact():
-    choice = input(("Search by? (F)irst name, (L)ast name or (P)hone number\n"+
+    choice = input(("Search by? (F)irst name, (L)ast name or \
+                    (P)hone number\n" +
                    "Enter F, L, or P: ")).casefold
     if choice == 'f':
         f_name = input("enter first name to search: ")
-        for index, item in enumerate(contact_list):
+        for index, item in enumerate(contactList):
             if item.first_name == f_name:
-                contact_list.pop(index)
+                contactList.pop(index)
     elif choice == 'l':
         l_name = input("enter first name to search: ")
-        for index, item in enumerate(contact_list):
+        for index, item in enumerate(contactList):
             if item.last_name == l_name:
-                contact_list.pop(index)
+                contactList.pop(index)
     elif choice == 'p':
         p_number = input("enter first name to search: ")
-        for index, item in enumerate(contact_list):
+        for index, item in enumerate(contactList):
             if item.phone_number == p_number:
-                contact_list.pop(index)
+                contactList.pop(index)
 
 
 user_choice = 0
 
 # # begin test contacts
-contact_list += contact(user1f,user1l,123456)
-contact_list += contact(user2f,user2l,234567)
-contact_list += contact(user3f,user3l,345678)
+contactList.append(contact('user1f', 'user1l', 123456))
+contactList.append(contact('user2f', 'user2l', 234567))
+contactList.append(contact('user3f', 'user3l', 345678))
 # # end test contacts
 
 while user_choice != "4":
     clear()
     user_choice = input(
-"""enter your choice:
+        """enter your choice:
 1) add a contact
 2) remove a contact
 3) list contacts
 4) Exit
  """)
-    
+
     if user_choice == "1":
-        contact_list += addContact()
+        contactList += addContact()
 
     elif user_choice == "2":
         removeContact()
 
     elif user_choice == "3":
-        for item in contact_list:
+        for item in contactList:
             print(item.first_name)
         input("press enter to continue")
 
-for i in contact_list:
+for i in contactList:
     print("{0} {1}".format(i.first_name, i.last_name))
